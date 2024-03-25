@@ -1,5 +1,5 @@
 import Header from "./(components)/Header";
-import Feature from "./(components)/feature";
+import Feature from "./(components)/Feature";
 
 const Home = () => {
   return (
