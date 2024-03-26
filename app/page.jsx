@@ -3,7 +3,7 @@ import Feature from "./(components)/Feature";
 
 const Home = () => {
   return (
-    <div class="container mx-auto">
+    <div className="container mx-auto">
       <Header></Header>
       <Feature></Feature>
     </div>
