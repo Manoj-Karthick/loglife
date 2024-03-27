@@ -2,11 +2,11 @@ import Link from "next/link";
 
 const Nav = () => {
   return (
-    <nav className="flex justify-between text-slate-900 p-4 border-b px-40">
-      <div className="flex items-center font-medium space-x-6">
-        <Link className="font-bold hover:text-emerald-600" href="/">
-          LogLife
-        </Link>
+    <nav className="flex justify-between text-slate-900 p-4 border-b px-10 md:px-40">
+      <Link className="font-bold hover:text-emerald-600" href="/">
+        LogLife
+      </Link>
+      <div className="items-center font-medium space-x-6 hidden md:flex">
         <Link href="/Expiry">Expiry</Link>
         <Link href="/Expiry">Habit</Link>
         <Link href="/Expiry">Finance</Link>

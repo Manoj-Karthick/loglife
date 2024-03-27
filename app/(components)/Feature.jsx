@@ -1,9 +1,11 @@
 const Feature = () => {
   return (
-    <div className="m-20">
+    <div className="m-5 md:m-20">
       <hr></hr>
-      <div className="mt-10 text-4xl font-bold text-center">Log Hub</div>
-      <div className="mt-10 grid grid-cols-3 gap-8">
+      <div className="mt-5 md:mt-10 text-2xl md:text-4xl font-bold text-center">
+        Log Hub
+      </div>
+      <div className="mt-10 grid md:grid-cols-3 gap-8">
         <div>
           <div className="grid bg-green-200 text-green-600 rounded-lg w-12 h-12 place-items-center mb-3">
             E
