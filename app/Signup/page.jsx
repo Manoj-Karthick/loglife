@@ -1,18 +1,37 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
+import toast from "react-hot-toast";
+import axios from "axios";
 
 const Signup = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const handleLogin = (e) => {
+  const router = useRouter();
+  const [user, setUser] = useState({
+    username: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+
+  const handleSignup = async (e) => {
     e.preventDefault();
-    console.log(email, password);
+    console.log(user);
+    try {
+      const response = await axios.post("/api/auth/signup", user);
+      console.log("Signup success", response.data);
+      router.push("/login");
+    } catch (err) {
+      console.log(err.message);
+      toast.error(err.message);
+    }
   };
+
   return (
-    <div className="container mx-auto">
-      <form onSubmit={handleLogin} className="space-y-5">
+    <div className="container mx-auto space-y-5">
+      <h1 className="text-2xl text-center font-semibold">Signup</h1>
+      <form onSubmit={handleSignup} className="space-y-5">
         <label className="input input-bordered flex items-center gap-2">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -25,9 +44,26 @@ const Signup = () => {
           </svg>
           <input
             type="text"
+            placeholder="Username"
+            onChange={(e) => setUser({ ...user, username: e.target.value })}
+            value={user.username}
+          />
+        </label>
+        <label className="input input-bordered flex items-center gap-2">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 16 16"
+            fill="currentColor"
+            className="w-4 h-4 opacity-70"
+          >
+            <path d="M2.5 3A1.5 1.5 0 0 0 1 4.5v.793c.026.009.051.02.076.032L7.674 8.51c.206.1.446.1.652 0l6.598-3.185A.755.755 0 0 1 15 5.293V4.5A1.5 1.5 0 0 0 13.5 3h-11Z" />
+            <path d="M15 6.954 8.978 9.86a2.25 2.25 0 0 1-1.956 0L1 6.954V11.5A1.5 1.5 0 0 0 2.5 13h11a1.5 1.5 0 0 0 1.5-1.5V6.954Z" />
+          </svg>
+          <input
+            type="email"
             placeholder="Email"
-            onChange={(e) => setEmail(e.target.value)}
-            value={email}
+            onChange={(e) => setUser({ ...user, email: e.target.value })}
+            value={user.email}
           />
         </label>
         <label className="input input-bordered flex items-center gap-2">
@@ -45,9 +81,9 @@ const Signup = () => {
           </svg>
           <input
             type="password"
-            placeholder="password"
-            onChange={(e) => setPassword(e.target.value)}
-            value={password}
+            placeholder="Password"
+            onChange={(e) => setUser({ ...user, password: e.target.value })}
+            value={user.password}
           />
         </label>
         <label className="input input-bordered flex items-center gap-2">
@@ -65,13 +101,23 @@ const Signup = () => {
           </svg>
           <input
             type="password"
-            placeholder="confirm password"
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            value={confirmPassword}
+            placeholder="Confirm password"
+            onChange={(e) =>
+              setUser({ ...user, confirmPassword: e.target.value })
+            }
+            value={user.confirmPassword}
           />
         </label>
-        <button className="btn btn-success">Submit</button>
+        <button className="btn btn-success text-white px-10">Signup</button>
       </form>
+      <div>
+        <Link
+          href="/login"
+          className="font-semibold cursor-pointer text-blue-500"
+        >
+          Login instead
+        </Link>
+      </div>
     </div>
   );
 };

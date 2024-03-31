@@ -1,16 +1,21 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [user, setUser] = useState({
+    email: "",
+    password: "",
+  });
+
   const handleLogin = (e) => {
     e.preventDefault();
-    console.log(email, password);
+    console.log(user);
   };
+
   return (
-    <div>
+    <div className="space-y-5">
       <form onSubmit={handleLogin} className="space-y-5">
         <label className="input input-bordered flex items-center gap-2">
           <svg
@@ -23,10 +28,10 @@ const Login = () => {
             <path d="M15 6.954 8.978 9.86a2.25 2.25 0 0 1-1.956 0L1 6.954V11.5A1.5 1.5 0 0 0 2.5 13h11a1.5 1.5 0 0 0 1.5-1.5V6.954Z" />
           </svg>
           <input
-            type="text"
-            placeholder="Email"
-            onChange={(e) => setEmail(e.target.value)}
-            value={email}
+            type="email"
+            placeholder="Enter your email"
+            onChange={(e) => setUser({ ...user, email: e.target.value })}
+            value={user.email}
           />
         </label>
         <label className="input input-bordered flex items-center gap-2">
@@ -44,13 +49,18 @@ const Login = () => {
           </svg>
           <input
             type="password"
-            placeholder="password"
-            onChange={(e) => setPassword(e.target.value)}
-            value={password}
+            placeholder="Enter your password"
+            onChange={(e) => setUser({ ...user, password: e.target.value })}
+            value={user.password}
           />
         </label>
-        <button className="btn btn-success">Success</button>
+        <button className="btn btn-success text-white px-10">Login</button>
       </form>
+      <div>
+        <Link className="font-semibold text-blue-500" href="/signup">
+          Signup instead
+        </Link>
+      </div>
     </div>
   );
 };
