@@ -15,7 +15,9 @@ const Nav = () => {
         <Link href="/Expiry">Goal</Link>
       </div>
       <div>
-        <p className="font-semibold cursor-pointer">Login</p>
+        <Link href="/Login" className="font-semibold cursor-pointer">
+          Login
+        </Link>
       </div>
     </nav>
   );
