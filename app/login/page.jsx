@@ -1,17 +1,30 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
+import toast from "react-hot-toast";
+import axios from "axios";
 
 const Login = () => {
+  const router = useRouter();
   const [user, setUser] = useState({
     email: "",
     password: "",
   });
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     console.log(user);
+    try {
+      const response = await axios.post("/api/auth/login", user);
+      console.log("login success", response.data);
+      toast.success("Login success");
+      router.push("/expiry");
+    } catch (err) {
+      console.log("login failed", err.message);
+      toast.error(err.message);
+    }
   };
 
   return (
