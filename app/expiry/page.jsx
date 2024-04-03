@@ -1,10 +1,33 @@
+"use client";
+import axios from "axios";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const Expiry = () => {
+  const router = useRouter();
+  const handleLogout = async () => {
+    try {
+      const response = await axios.get("/api/auth/logout");
+      console.log(response);
+      router.push("/login");
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
   return (
     <div>
       Expiry Page
-      <Link href="add">Add Expiry</Link>
+      <div>
+        <Link href="add">Add Expiry</Link>
+      </div>
+      <div>
+        <button
+          onClick={handleLogout}
+          className="p-2 text-blue-500 bg-slate-200 my-2 rounded"
+        >
+          Logout
+        </button>
+      </div>
       <div className="flex justify-between">
         <div>
           <div>Fruits & Vegetables - 21 items</div>
