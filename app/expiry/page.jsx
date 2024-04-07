@@ -2,12 +2,16 @@
 import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useDispatch } from "react-redux";
+import { logOut } from "../(redux)/features/authSlice";
 
 const Expiry = () => {
   const router = useRouter();
+  const dispatch = useDispatch();
   const handleLogout = async () => {
     try {
       const response = await axios.get("/api/auth/logout");
+      dispatch(logOut());
       console.log(response);
       router.push("/login");
     } catch (err) {

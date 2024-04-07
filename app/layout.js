@@ -1,6 +1,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Nav from "./(components)/Nav";
+import { ReduxProvider } from "./(redux)/provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,8 +15,12 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <div className="flex flex-col h-screen max-h-screen">
-          <Nav></Nav>
-          <div className="flex-grow overflow-y-auto p-4">{children}</div>
+          <ReduxProvider>
+            <Nav></Nav>
+          </ReduxProvider>
+          <div className="flex-grow overflow-y-auto p-4">
+            <ReduxProvider>{children}</ReduxProvider>
+          </div>
         </div>
       </body>
     </html>

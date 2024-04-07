@@ -5,6 +5,8 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import toast from "react-hot-toast";
 import axios from "axios";
+import { logIn } from "@/app/(redux)/features/authSlice";
+import { useDispatch } from "react-redux";
 
 const Login = () => {
   const router = useRouter();
@@ -12,15 +14,22 @@ const Login = () => {
     email: "",
     password: "",
   });
+  const dispatch = useDispatch();
 
   const handleLogin = async (e) => {
     e.preventDefault();
     console.log(user);
     try {
+      setUser({ email: "", password: "" });
       const response = await axios.post("/api/auth/login", user);
-      console.log("login success", response.data);
-      toast.success("Login success");
-      router.push("/dashboard");
+      if (response.status == 500) {
+        toast.error("Error occurred while login");
+      }
+      if (response.status == 200) {
+        dispatch(logIn(response.data));
+        toast.success("Login success");
+        router.push("/dashboard");
+      }
     } catch (err) {
       console.log("login failed", err.message);
       toast.error(err.message);
