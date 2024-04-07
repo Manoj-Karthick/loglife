@@ -18,7 +18,6 @@ const Login = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    console.log(user);
     try {
       setUser({ email: "", password: "" });
       const response = await axios.post("/api/auth/login", user);
@@ -31,7 +30,6 @@ const Login = () => {
         router.push("/dashboard");
       }
     } catch (err) {
-      console.log("login failed", err.message);
       toast.error(err.message);
     }
   };

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { logOut } from "../(redux)/features/authSlice";
+import toast from "react-hot-toast";
 
 const Expiry = () => {
   const router = useRouter();
@@ -12,10 +13,9 @@ const Expiry = () => {
     try {
       const response = await axios.get("/api/auth/logout");
       dispatch(logOut());
-      console.log(response);
       router.push("/login");
     } catch (err) {
-      console.log(err.message);
+      toast.error(err.message);
     }
   };
   return (

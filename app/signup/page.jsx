@@ -17,13 +17,16 @@ const Signup = () => {
 
   const handleSignup = async (e) => {
     e.preventDefault();
-    console.log(user);
+    setUser({
+      username: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+    });
     try {
       const response = await axios.post("/api/auth/signup", user);
-      console.log("Signup success", response.data);
       router.push("/login");
     } catch (err) {
-      console.log(err.message);
       toast.error(err.message);
     }
   };

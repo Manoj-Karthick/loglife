@@ -10,7 +10,6 @@ export async function POST(request) {
   try {
     const reqBody = await request.json();
     const { email, password } = reqBody;
-    console.log(reqBody);
 
     //check to see if user already exist
     const user = await User.findOne({ email });
