@@ -15,15 +15,35 @@ const Signup = () => {
     confirmPassword: "",
   });
 
+  const [error, setError] = useState({
+    email: "",
+    password: "",
+  });
+
   const handleSignup = async (e) => {
     e.preventDefault();
-    setUser({
-      username: "",
-      email: "",
-      password: "",
-      confirmPassword: "",
-    });
+
+    if (!user.email) {
+      setError({ email: "Please enter email address" });
+      return;
+    }
+    if (user.password.length < 8 || user.password.length > 15) {
+      setError({
+        password: "Password length must be between 8 and 15",
+      });
+      return;
+    }
+    if (user.password != user.confirmPassword) {
+      setError({ password: "Password doesn't match" });
+      return;
+    }
     try {
+      setUser({
+        username: "",
+        email: "",
+        password: "",
+        confirmPassword: "",
+      });
       const response = await axios.post("/api/auth/signup", user);
       router.push("/login");
     } catch (err) {
@@ -52,6 +72,7 @@ const Signup = () => {
             value={user.username}
           />
         </label>
+
         <label className="input input-bordered flex items-center gap-2">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -69,6 +90,7 @@ const Signup = () => {
             value={user.email}
           />
         </label>
+        {error.email && <div className="p-2 text-red-500">{error.email}</div>}
         <label className="input input-bordered flex items-center gap-2">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -89,6 +111,9 @@ const Signup = () => {
             value={user.password}
           />
         </label>
+        {error.password && (
+          <div className="p-2 text-red-500">{error.password}</div>
+        )}
         <label className="input input-bordered flex items-center gap-2">
           <svg
             xmlns="http://www.w3.org/2000/svg"

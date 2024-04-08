@@ -10,21 +10,36 @@ import { useDispatch } from "react-redux";
 
 const Login = () => {
   const router = useRouter();
+
   const [user, setUser] = useState({
     email: "",
     password: "",
+  });
+  const [error, setError] = useState({
+    email: "",
+    login: "",
   });
   const dispatch = useDispatch();
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    if (!user.email) {
+      setError({ email: "Please enter email address" });
+      return;
+    }
     try {
+      setError({
+        email: "",
+        login: "",
+      });
       setUser({ email: "", password: "" });
       const response = await axios.post("/api/auth/login", user);
-      if (response.status == 500) {
+      console.log(response);
+      if (response.data.status == 500) {
+        setError({ login: "Email or password is incorrect" });
         toast.error("Error occurred while login");
       }
-      if (response.status == 200) {
+      if (response.data.status == 200) {
         dispatch(logIn(response.data));
         toast.success("Login success");
         router.push("/dashboard");
@@ -54,6 +69,7 @@ const Login = () => {
             value={user.email}
           />
         </label>
+        {error.email && <div className="p-2 text-red-500">{error.email}</div>}
         <label className="input input-bordered flex items-center gap-2">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -74,6 +90,7 @@ const Login = () => {
             value={user.password}
           />
         </label>
+        {error.login && <div className="p-2 text-red-500">{error.login}</div>}
         <button className="btn btn-success text-white px-10">Login</button>
       </form>
       <div>
