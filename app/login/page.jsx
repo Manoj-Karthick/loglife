@@ -50,7 +50,7 @@ const Login = () => {
   };
 
   return (
-    <div className="space-y-5">
+    <div className="container mx-auto space-y-5">
       <form onSubmit={handleLogin} className="space-y-5">
         <label className="input input-bordered flex items-center gap-2">
           <svg
