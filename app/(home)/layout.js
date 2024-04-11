@@ -13,10 +13,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className="flex flex-col h-screen max-h-screen">
-          <ReduxProvider>
+        <div className="flex h-screen max-h-screen bg-violet-100">
+          <div className="bg-white min-w-56">
             <AppNav></AppNav>
-          </ReduxProvider>
+          </div>
           <div className="flex-grow overflow-y-auto p-4">
             <ReduxProvider>{children}</ReduxProvider>
           </div>
