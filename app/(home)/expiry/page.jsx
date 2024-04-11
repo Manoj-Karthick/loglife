@@ -1,36 +1,12 @@
 "use client";
-import axios from "axios";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useDispatch } from "react-redux";
-import { logOut } from "@/app/(redux)/features/authSlice";
-import toast from "react-hot-toast";
 
 const Expiry = () => {
-  const router = useRouter();
-  const dispatch = useDispatch();
-  const handleLogout = async () => {
-    try {
-      const response = await axios.get("/api/auth/logout");
-      dispatch(logOut());
-      router.push("/login");
-    } catch (err) {
-      toast.error(err.message);
-    }
-  };
   return (
     <div>
       Expiry Page
       <div>
         <Link href="add">Add Expiry</Link>
-      </div>
-      <div>
-        <button
-          onClick={handleLogout}
-          className="p-2 text-blue-500 bg-slate-200 my-2 rounded"
-        >
-          Logout
-        </button>
       </div>
       <div className="flex justify-between">
         <div>

@@ -1,4 +1,6 @@
 import Link from "next/link";
+import Logout from "./Logout";
+import { ReduxProvider } from "../(redux)/provider";
 
 export default function AppNav() {
   return (
@@ -116,6 +118,9 @@ export default function AppNav() {
           Settings
         </div>
       </Link>
+      <ReduxProvider>
+        <Logout></Logout>
+      </ReduxProvider>
     </div>
   );
 }

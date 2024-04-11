@@ -22,7 +22,7 @@ export default function Nav() {
       <div>
         <Link
           href="/login"
-          className="font-semibold cursor-pointer bg-gray-300 hover:bg-gray-200 rounded-md p-2 transition-all duration-300"
+          className="font-semibold cursor-pointer bg-blue-100 hover:bg-blue-200 rounded-md p-2 transition-all duration-300"
         >
           Login &rarr;
         </Link>
