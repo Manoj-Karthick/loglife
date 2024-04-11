@@ -50,7 +50,14 @@ const Login = () => {
   };
 
   return (
-    <div className="container mx-auto space-y-5">
+    <div className="container mx-auto space-y-5 m-20">
+      <Link
+        className=" text-blue-500 hover:bg-blue-100 p-2 rounded-md transition-all duration-300"
+        href="/"
+      >
+        &larr; Go to home
+      </Link>
+      <h1 className="text-2xl text-center font-semibold">Login</h1>
       <form onSubmit={handleLogin} className="space-y-5">
         <label className="input input-bordered flex items-center gap-2">
           <svg
@@ -94,7 +101,10 @@ const Login = () => {
         <button className="btn btn-success text-white px-10">Login</button>
       </form>
       <div>
-        <Link className="font-semibold text-blue-500" href="/signup">
+        <Link
+          className="font-semibold text-blue-500 hover:bg-blue-100 p-2 rounded-md transition-all duration-300"
+          href="/signup"
+        >
           Signup instead
         </Link>
       </div>

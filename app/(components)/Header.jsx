@@ -16,7 +16,7 @@ const Header = () => {
           </div>
           <Link
             href="/signup"
-            className="text-white bg-emerald-600 hover:bg-emerald-700 transition-all duration-300 shadow-2xl py-3 px-3 md:px-6 font-semibold md:font-bold text-base md:text-lg rounded-md cursor-pointer"
+            className="border-2 border-emerald-600 text-white bg-emerald-600 hover:bg-emerald-700 transition-all duration-300 shadow-2xl py-2 px-3 md:px-6 font-semibold md:font-bold text-base md:text-lg rounded-md cursor-pointer"
           >
             Create Account
           </Link>

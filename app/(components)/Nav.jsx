@@ -1,12 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import axios from "axios";
-import { useSelector } from "react-redux";
 
 export default function Nav() {
-  const username = useSelector((state) => state.authReducer.value.username);
   return (
     <nav className="flex justify-between text-slate-900 p-4 border-b px-10 md:px-10 lg:px-20">
       <Link
@@ -24,13 +20,12 @@ export default function Nav() {
         <Link href="/expiry">Goal</Link>
       </div>
       <div>
-        {username ? (
-          username
-        ) : (
-          <Link href="/login" className="font-semibold cursor-pointer">
-            Login
-          </Link>
-        )}
+        <Link
+          href="/login"
+          className="font-semibold cursor-pointer bg-gray-300 hover:bg-gray-200 rounded-md p-2 transition-all duration-300"
+        >
+          Login &rarr;
+        </Link>
       </div>
     </nav>
   );

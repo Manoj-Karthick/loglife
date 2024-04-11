@@ -3,7 +3,7 @@ import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
-import { logOut } from "../(redux)/features/authSlice";
+import { logOut } from "@/app/(redux)/features/authSlice";
 import toast from "react-hot-toast";
 
 const Expiry = () => {
