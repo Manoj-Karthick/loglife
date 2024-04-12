@@ -21,12 +21,13 @@ const Logout = () => {
   };
   return (
     <div>
-      <button
-        className="cursor-pointer bg-blue-200 p-2 rounded-lg bg-auto mt-40 hover:bg-blue-300 transition-all duration-300"
-        onClick={handleLogout}
-      >
-        Logout &rarr;
-      </button>
+      <ul className="menu bg-base-200 w-56 rounded-box">
+        <li>
+          <button className="" onClick={handleLogout}>
+            Logout &rarr;
+          </button>
+        </li>
+      </ul>
     </div>
   );
 };

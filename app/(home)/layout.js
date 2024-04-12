@@ -11,9 +11,9 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" data-theme="cupcake">
       <body className={inter.className}>
-        <div className="flex h-screen max-h-screen bg-violet-100">
+        <div className="flex h-screen max-h-screen">
           <div className="bg-white min-w-56">
             <AppNav></AppNav>
           </div>

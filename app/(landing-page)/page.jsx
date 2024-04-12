@@ -6,7 +6,7 @@ import { ReduxProvider } from "../(redux)/provider";
 const Home = () => {
   return (
     <div className="flex flex-col h-screen max-h-screen">
-      <div className="flex flex-col h-screen max-h-screen">
+      <div className="flex flex-col">
         <Nav></Nav>
       </div>
       <div className="container mx-auto">
