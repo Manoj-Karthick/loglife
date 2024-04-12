@@ -14,7 +14,7 @@ export default function RootLayout({ children }) {
     <html lang="en" data-theme="cupcake">
       <body className={inter.className}>
         <div className="flex h-screen max-h-screen">
-          <div className="bg-white min-w-56">
+          <div className="bg-white min-w-64">
             <AppNav></AppNav>
           </div>
           <div className="flex-grow overflow-y-auto p-4">

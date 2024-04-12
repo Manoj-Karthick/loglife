@@ -29,7 +29,7 @@ export default function AppNav() {
       </ul>
 
       <div className="font-semibold text-sm opacity-70 select-none">LOGS</div>
-      <ul class="menu bg-base-200 w-56 rounded-box space-y-2">
+      <ul className="menu bg-base-200 w-56 rounded-box space-y-2">
         <li>
           <Link href="/expiry" className="cursor-pointer hover:text-violet-800">
             <div className="flex gap-2">
@@ -125,11 +125,10 @@ export default function AppNav() {
         </li>
       </ul>
 
-      <hr />
       <div className="font-semibold text-sm opacity-70 select-none">
         ADVANCED
       </div>
-      <ul class="menu bg-base-200 w-56 rounded-box">
+      <ul className="menu bg-base-200 w-56 rounded-box">
         <li>
           <Link
             href="/settings"
