@@ -24,9 +24,11 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     setloading(true);
+    const toastId = toast.loading("Loading...");
     if (!user.email) {
       setError({ email: "Please enter email address" });
       setloading(false);
+      toast.dismiss(toastId);
       return;
     }
     try {
@@ -40,24 +42,23 @@ const Login = () => {
       if (response.data.status == 500) {
         setError({ login: "Email or password is incorrect" });
         setloading(false);
+        toast.dismiss(toastId);
         toast.error("Error occurred while login");
       }
       if (response.data.status == 200) {
         dispatch(logIn(response.data));
-        toast.success("Login success");
         router.push("/dashboard");
       }
     } catch (err) {
       toast.error(err.message);
+      toast.dismiss(toastId);
     }
   };
 
   return (
     <div>
       {loading ? (
-        <div className="text-center">
-          <span className="loading loading-spinner loading-lg"></span>
-        </div>
+        <div></div>
       ) : (
         <div className="container mx-auto space-y-5 m-20">
           <Link
